@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+</head>
+<script>
+    function returnBook() {
+        // Send AJAX request to mark book as returned with the current date
+        $.ajax({
+            url: '@Url.Action("ReturnBook", "Loans")',
+            type: 'POST',
+            data: {
+                returnDate: new Date().toISOString() // Send the current date as ISO string
+            },
+            success: function (response) {
+                alert("Book return date updated successfully.");
+            },
+            error: function () {
+                alert("Error updating return date.");
+            }
+        });
+    }
+
+    function logout() {
+        // Redirect to the logout action and prompt the user to close the tab
+        $.ajax({
+            url: '@Url.Action("Logout", "Account")',
+            type: 'POST',
+            success: function () {
+                alert("You have been logged out. Please close this tab.");
+                // Optional: Try closing the window (may not work on all browsers)
+                window.close();
+            },
+            error: function () {
+                alert("Error during logout.");
+            }
+        });
+    }
+</script>
+
+<body>
+    <!-- Top Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApplication1</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Index">Members</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Loans" asp-action="Index">Loans</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-container d-flex">
+        <!-- Sidebar for Admin Dashboard Navigation -->
+        <aside class="sidebar bg-dark text-white">
+            <h2 class="p-3">Library Admin</h2>
+            <nav>
+                <ul class="nav flex-column p-3">
+                    <li class="nav-item">
+                        <a href="@Url.Action("Dashboard", "Home")" class="nav-link text-white"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Create", "Books")" class="nav-link text-white"><i class="fas fa-book"></i> Add Book</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("Create", "Members" )" class="nav-link text-white"><i class="fas fa-user-plus"></i> Add Student</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("Create", "Loans")" " class="nav-link text-white"><i class="fas fa-book-reader"></i> Issue Book</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("AllBooks", "Dashboard")" class="nav-link text-white"><i class="fas fa-list"></i> View Issued Books</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("AllStudents", "Dashboard")" class="nav-link text-white"><i class="fas fa-users"></i> View Students</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="@Url.Action("ReturnBook", "Loans")" class="nav-link text-white" onclick="returnBook()"><i class="fas fa-undo"></i> Return Book</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="javascript:void(0);" class="nav-link text-white" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="content p-4 flex-grow-1">
+
+            <!-- Placeholder for additional content rendered by Razor -->
+            <main role="main" class="pb-3">
+                        @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

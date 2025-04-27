@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebApplication1.Models.Member>
+
+<h2>All Student</h2>
+<ul>
+    @foreach (var student in Model)
+    {
+        <li>
+            @student.Name - Phone: @student.Phone
+            <a asp-action="Details" asp-controller="Members" asp-route-id="@student.MemberId" class="text-link">View Details</a>
+        </li>
+    }
+</ul>

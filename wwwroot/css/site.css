@@ -1,0 +1,148 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.dashboard-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px;
+}
+
+    .sidebar h2 {
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: #ecdbba;
+    }
+
+    .sidebar nav ul {
+        list-style: none;
+    }
+
+        .sidebar nav ul li {
+            margin: 15px 0;
+        }
+
+            .sidebar nav ul li a {
+                color: #ecf0f1;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                font-size: 1.1em;
+            }
+
+                .sidebar nav ul li a i {
+                    margin-right: 10px;
+                }
+
+                .sidebar nav ul li a:hover {
+                    color: #bdc3c7;
+                }
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.welcome-banner {
+    margin-bottom: 20px;
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+    .welcome-banner h1 {
+        font-size: 2em;
+    }
+
+.metrics {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #ecdbba;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    flex: 1;
+}
+
+    .card h3 {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+.recent-activities {
+    margin-bottom: 20px;
+}
+
+    .recent-activities h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .recent-activities ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+    .search-bar input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+.forms-and-tables form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+    .forms-and-tables form input, .forms-and-tables form button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    table th, table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #3498db;
+        color: white;
+    }
+
+    table tr:hover {
+        background-color: #f1f1f1;
+    }

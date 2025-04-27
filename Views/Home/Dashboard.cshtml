@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+@model WebApplication1.Models.DashboardViewModel
+
+<link href="~/css/dashboard.css" rel="stylesheet" />
+<div class="dashboard-container d-flex">
+    <div class="content p-4 flex-grow-1">
+        <section class="welcome-banner bg-primary text-white p-4 mb-4 rounded">
+            <h1>Welcome, Admin</h1>
+            <p>Manage your library efficiently.</p>
+        </section>
+
+        <section class="metrics d-flex gap-3 mb-4">
+            <div class="card text-center p-3 bg-light">
+                <h3>Total Books</h3>
+                <p>@Model.TotalBooks</p>
+            </div>
+            <div class="card text-center p-3 bg-light">
+                <h3>Total Students</h3>
+                <p>@Model.TotalStudents</p>
+            </div>
+            <div class="card text-center p-3 bg-light">
+                <h3>Issued Books</h3>
+                <p>@Model.IssuedBooks</p>
+            </div>
+            <div class="card text-center p-3 bg-light">
+                <h3>Overdue Books</h3>
+                <p>@Model.OverdueBooks</p>
+            </div>
+        </section>
+    </div>
+</div>

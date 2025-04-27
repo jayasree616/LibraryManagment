@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebApplication1.Models.Loan>
+
+<h2>All Issued Books</h2>
+<ul>
+    @foreach (var Book in Model)
+    {
+        <li>
+            @Book.BookId - MemberId: @Book.MemberId- ReturnDate: @Book.ReturnDate
+            <a asp-action="Details" asp-controller="Loans" asp-route-id="@Book.LoanId" class="text-link">View Details</a>
+        </li>
+    }
+</ul>
